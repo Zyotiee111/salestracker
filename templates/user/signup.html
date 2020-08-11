@@ -10,6 +10,7 @@
   
     <button type="submit" class="btn btn-primary">Register</button>
     <p class="error-message">
+        <!-- the errors are not showing -->
         {% if form.non_field_errors %}
             {% for error in form.non_field_errors %}
                 {{ error }}
