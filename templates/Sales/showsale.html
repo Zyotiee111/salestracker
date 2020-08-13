@@ -1,0 +1,36 @@
+{% extends 'Sales/base.html' %}
+
+{% block content %}
+<h1> Sales Transaction </h1>
+<div class="container">
+    {% for s in saless %}
+    <hr class="b">
+     <h4> Date : <span> {{ s.date}}</span></h4>
+     <h4> Customer: <span> {{ s.sold_to}}</span></h4>
+     <h4> Item : <span> {{ s.item}}</span></h4>
+     <h4> Description: <span> {{ s.description}}</span></h4>
+     <h4> Quantity : <span> {{ s.quantity}}</span></h4>
+     <h4> Status : <span> {{ s.status}}</span></h4>
+     <h4> Amount: <span> {{ s.amount}}</span></h4>
+     <h4> Due Amount: <span> {{ s.dueamount}}</span></h4>
+
+    <a href="{% url 'sale:edit_sale' s.id %}">
+        <span class="glyphicon glyphicon-pencil"> Edit</span>
+    </a>
+    <a href="{% url 'sale:delete_sale' s.id %}"> 
+        <span class="glyphicon glyphicon-trash"> Delete </span>
+    </a> 
+    <hr class="b">
+     {% endfor %}
+
+</div>
+<br>
+<br>
+<center> 
+    <a href="{%url 'sale:add_sale'%}"class="btn btn-primary">Add new Transaction</a>
+</center>
+<br>
+<center>
+   <a href="{% url 'index' %}" class="btn btn-success">Back to home page </a>
+</center>
+{% endblock %}

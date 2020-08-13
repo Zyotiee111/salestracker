@@ -1,0 +1,11 @@
+.container{
+    padding-left: 200px;
+    margin-right: 250px;
+  
+}
+h1{
+    text-align: center;
+}
+hr.b {
+    border: 1px solid black;
+  }
