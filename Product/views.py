@@ -4,7 +4,7 @@ from Product.models import Product
 
 # Create your views here.
 
-def add(request):
+def track(request):
     if request.method == "POST":
         form = ProductForm(request.POST)
         if form.is_valid():
@@ -17,12 +17,12 @@ def add(request):
         form = ProductForm()
     return render(request, "product/addproduct.html", {'form': form})
 
-def show(request):
+def display(request):
     products = Product.objects.all()
     return render(request,"product/showproduct.html", {'products': products})
 
 
-def edit(request, id):
+def update(request, id):
     product = Product.objects.get(id=id)
     form = ProductForm(request.POST or None, instance=product)
     if request.method == "POST":

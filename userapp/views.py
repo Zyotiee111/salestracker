@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -13,8 +13,14 @@ def register(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
         if form.is_valid():
-            form.save()
-            return redirect("index")
+            try:
+                form.save()
+                return redirect("login")
+            except:
+                return HttpResponse(form.errors)
+        else:
+            return render(response , "user/signup.html", {"form":form})
     else:
         form = RegisterForm()
-        return render(response, "user/signup.html", {"form":form})
+    return render(response , "user/signup.html", {"form":form})
+

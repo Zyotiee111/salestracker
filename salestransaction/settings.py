@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "crispy_forms",
     'userapp',
     'Product',
+    'customer',
+    'mathfilters',
+    'sales',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +82,7 @@ WSGI_APPLICATION = 'salestransaction.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'salestransaction',
+        'NAME': 'salestransactionn',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
