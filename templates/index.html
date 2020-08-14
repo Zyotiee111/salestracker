@@ -7,8 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/index.css'%}">
+ 
 </head>
 <body>
 
@@ -21,7 +23,7 @@
 
 </div>
 
-<div class="container">
+<div class="container bg-dark">
     <div class="jumbotron">
       <h1>Sales Tracker </h1>      
       <p> Track your all the sales</p>
@@ -47,17 +49,22 @@
 
         </div>
         </a>
-        <a href="#">
+        <a href="{% url 'invoice:create_invoice'%}">
         <div>
             <p> Invoice </p>
         </div>
         </a>
        
     </div>
-  </div>  
+  </div> 
+   <br> 
    <div>
-     <a href="{% url 'logout'%}"> <button class="btn btn-primary"> Logout Here</button> </a>
+    <center><a href="{% url 'logout'%}"> <button class="btn btn-primary"> Logout Here</button> </a> </center> 
    </div>
+   <br>
+   <br>
+   <br>
+
   <footer class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">
         © 2020 Copyright: SalesTracker

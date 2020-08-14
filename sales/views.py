@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render,redirect
 from  sales.forms import SalesForm
 from  sales.models import Sales
@@ -37,3 +36,5 @@ def delete(request,id):
     sales = Sales.objects.get(id=id)
     sales.delete()
     return redirect("sale:show_sale")
+
+

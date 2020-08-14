@@ -2,35 +2,41 @@
 
 {% block content %}
 <h1> Sales Transaction </h1>
-<div class="container">
+<div class="container ">
     {% for s in saless %}
     <hr class="b">
-     <h4> Date : <span> {{ s.date}}</span></h4>
-     <h4> Customer: <span> {{ s.sold_to}}</span></h4>
-     <h4> Item : <span> {{ s.item}}</span></h4>
-     <h4> Description: <span> {{ s.description}}</span></h4>
-     <h4> Quantity : <span> {{ s.quantity}}</span></h4>
-     <h4> Status : <span> {{ s.status}}</span></h4>
-     <h4> Amount: <span> {{ s.amount}}</span></h4>
-     <h4> Due Amount: <span> {{ s.dueamount}}</span></h4>
-
-    <a href="{% url 'sale:edit_sale' s.id %}">
-        <span class="glyphicon glyphicon-pencil"> Edit</span>
-    </a>
-    <a href="{% url 'sale:delete_sale' s.id %}"> 
-        <span class="glyphicon glyphicon-trash"> Delete </span>
-    </a> 
+    <div class="row">
+        <h4 style="text-align: center;"> Date : <span> {{ s.date}}</span></h4>
+        <div class="col-md-6" style="padding-left: 150px; margin-top: 0%;">
+           
+            <h4> Customer: <span> {{ s.sold_to}}</span></h4>
+            <h4> Item : <span> {{ s.item}}</span></h4>
+            <h4> Description: <span> {{ s.description}}</span></h4>
+            <h4> Status: <span> {{ s.status}}</span></h4>
+            <h4> Due Amount: <span> {{ s.dueamount}}</span></h4>
+        </div>
+        <div class="col-md-6" style="padding-left: 250px;">
+            <h4> Quantity : <span> {{ s.quantity}}</span></h4>
+            <h4> Rate: <span> {{ s.amount}}</span></h4>
+            <h4> Discount: <span> {{ s.Discount}}</span></h4>
+            <h4> Total: <span> {{ s.Total}}</span></h4>
+        </div>
+    </div>
+ <center> <a href="{% url 'sale:edit_sale' s.id %}" class="btn btn-primary"> Edit 
+ <a href="{% url 'sale:delete_sale' s.id %}" class="btn btn-primary" style="margin-left: 10px;"> Delete </a></center> 
+   
     <hr class="b">
+
+   
      {% endfor %}
 
 </div>
-<br>
-<br>
+
 <center> 
     <a href="{%url 'sale:add_sale'%}"class="btn btn-primary">Add new Transaction</a>
 </center>
 <br>
 <center>
-   <a href="{% url 'index' %}" class="btn btn-success">Back to home page </a>
+   <a href="{% url 'index' %}" class="btn btn-success btn-lg">Back to home page </a>
 </center>
 {% endblock %}

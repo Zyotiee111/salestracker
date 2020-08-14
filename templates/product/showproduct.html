@@ -26,6 +26,7 @@
                  <th> Total Sale</th>
                  <th> Capital Price</th>
                  <th> Selling Price</th>
+                 <th> Discount</th>
                  <th> Total Profit</th>
              </tr>
 
@@ -40,6 +41,7 @@
                 <td> {{ product.totalsale }}</td>
                 <td> {{ product.capital_price }}</td>
                 <td> {{ product.selling_price }}</td>
+                <td> {{ product.discount }}</td>
                 <td> {{ product.totalprofit }}</td>
                 <td>
                     <a href="{% url 'edit_product' product.id %}">
@@ -62,7 +64,7 @@
     </center>
     <br>
     <center>
-        <a href="{% url 'index' %}" class="btn btn-success">Back to home page </a>
+        <a href="{% url 'index' %}" class="btn btn-success btn-large">Back to home page </a>
    </center>
 
    </body>

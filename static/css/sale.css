@@ -9,3 +9,9 @@ h1{
 hr.b {
     border: 1px solid black;
   }
+#name{
+    text-align: center;
+}
+.table th td{
+    border: 1px solid black;
+}

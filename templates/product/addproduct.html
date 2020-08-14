@@ -9,7 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
-     <body>
+     <body style="background-color: wheat;">
         <form method="POST" class="post-form">
         {% csrf_token %}
        
@@ -66,6 +66,13 @@
                 <label class="col-sm-1 col-form-label">Selling Price</label>
                 <div class="col-sm-4">
                     {{ form.selling_price}}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Discount</label>
+                <div class="col-sm-4">
+                    {{ form.discount}}
                 </div>
             </div>
         

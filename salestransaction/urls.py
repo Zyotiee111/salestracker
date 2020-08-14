@@ -27,4 +27,5 @@ urlpatterns = [
     path('product/',include("Product.urls")),
     path('buyer/',include("customer.urls")),
     path('transaction/',include("sales.urls")),
+    path('invoice/',include("invoice.urls")),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -11,6 +11,7 @@ class Product(models.Model):
     totalsale = models.IntegerField()
     capital_price = models.DecimalField(max_digits=10,decimal_places=2)
     selling_price = models.DecimalField(max_digits=10,decimal_places=2,default=None)
+    discount = models.DecimalField(max_digits=10,decimal_places=2,default =None)
     totalprofit = models.DecimalField(max_digits=10,decimal_places=2)
 
     def __str__(self):

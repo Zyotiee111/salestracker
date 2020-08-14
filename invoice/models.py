@@ -8,16 +8,16 @@ choice = (
 )
 
 # Create your models here.
-class Sales(models.Model):
+class Invoice(models.Model):
     id = models.AutoField(primary_key=True)
     date = models.DateField()
-    sold_to = models.ForeignKey(Customer, on_delete = models.CASCADE, related_name ="+") 
+    invoice_for = models.ForeignKey(Customer, on_delete = models.CASCADE, related_name ="+") 
     item = models.ForeignKey(Product, on_delete = models.CASCADE, related_name ="+")
     description = models.CharField(max_length = 255, default = None)
     quantity = models.IntegerField(default= None)
-    amount = models.DecimalField(max_digits=10,decimal_places=2)
     status =  models.CharField(max_length = 20,choices= choice )
+    amount = models.DecimalField(max_digits=10,decimal_places=2)
+    discount = models.DecimalField(max_digits=10,decimal_places=2)
     dueamount = models.DecimalField(max_digits=10,decimal_places=2)
-    Discount = models.DecimalField(max_digits=10,decimal_places=2,default = None)
-    Total = models.DecimalField(max_digits=10,decimal_places=2,default = None)
+    total = models.DecimalField(max_digits=10,decimal_places=2, default = None)
 
