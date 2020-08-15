@@ -2,7 +2,10 @@
 
 {% block content %}
 <h1> Sales Transaction </h1>
+
+
 <div class="container ">
+   
     {% for s in saless %}
     <hr class="b">
     <div class="row">
@@ -11,16 +14,18 @@
            
             <h4> Customer: <span> {{ s.sold_to}}</span></h4>
             <h4> Item : <span> {{ s.item}}</span></h4>
-            <h4> Description: <span> {{ s.description}}</span></h4>
             <h4> Status: <span> {{ s.status}}</span></h4>
             <h4> Due Amount: <span> {{ s.dueamount}}</span></h4>
-        </div>
-        <div class="col-md-6" style="padding-left: 250px;">
             <h4> Quantity : <span> {{ s.quantity}}</span></h4>
+        </div>
+      
+        <div class="col-md-6" style="padding-left: 250px;">
+           
             <h4> Rate: <span> {{ s.amount}}</span></h4>
             <h4> Discount: <span> {{ s.Discount}}</span></h4>
             <h4> Total: <span> {{ s.Total}}</span></h4>
         </div>
+      
     </div>
  <center> <a href="{% url 'sale:edit_sale' s.id %}" class="btn btn-primary"> Edit 
  <a href="{% url 'sale:delete_sale' s.id %}" class="btn btn-primary" style="margin-left: 10px;"> Delete </a></center> 

@@ -13,7 +13,6 @@ class Sales(models.Model):
     date = models.DateField()
     sold_to = models.ForeignKey(Customer, on_delete = models.CASCADE, related_name ="+") 
     item = models.ForeignKey(Product, on_delete = models.CASCADE, related_name ="+")
-    description = models.CharField(max_length = 255, default = None)
     quantity = models.IntegerField(default= None)
     amount = models.DecimalField(max_digits=10,decimal_places=2)
     status =  models.CharField(max_length = 20,choices= choice )

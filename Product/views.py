@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from Product.forms import ProductForm
 from Product.models import Product
+from django.db.models import F
 
 # Create your views here.
 
@@ -35,4 +36,18 @@ def update(request, id):
 def delete(request,id):
     product = Product.objects.get(id=id)
     product.delete()
+    return redirect('show_product')
+
+
+def result(request):
+    results = Product.objects.annotate(
+             diff=F(selling_price) - F(capital_price)
+         )
+    return render(request, "Product/showproduct.html", {'results': results})
+
+def sale_num(request,id):
+    instance = Product.objects.get(id = id)
+    salen = instance.totalsale + 1
+    instance.totalsale = salen
+    instance.save()
     return redirect('show_product')
