@@ -10,8 +10,8 @@ class Product(models.Model):
     quantity = models.IntegerField()
     totalsale = models.IntegerField(editable = False, null = True)
     capital_price = models.DecimalField(max_digits=10,decimal_places=2)
-    selling_price = models.DecimalField(max_digits=10,decimal_places=2,default=None)
-    discount = models.DecimalField(max_digits=10,decimal_places=2,default =None)
+    selling_price = models.DecimalField(max_digits=10,decimal_places=2)
+    discount = models.DecimalField(max_digits=10,decimal_places=2)
     item_remaining = models.IntegerField(editable= False, null = True)
     totalprofit = models.DecimalField(max_digits=10,decimal_places=2,editable = False, null =True)
 

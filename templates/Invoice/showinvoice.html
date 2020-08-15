@@ -6,14 +6,14 @@
         <div class="col-md-" style="text-align:center;"> <h1> Sales Tracker Invoice </h1></div>
     </div>
     
-    {% for i in invoice %}
+    {% for s in saless %}
    
        
     <table class="table  table-bordered table-sm" style="border:2px solid black">
         
         <tr>
             <th style="border:1px solid black"> Customer Name</th>
-            <td style="border:1px solid black">  {{ i.invoice_for }}</td>
+            <td style="border:1px solid black">  {{ s.id }}</td>
         </tr>
         
         <tr>

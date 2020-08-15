@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'customer',
     'mathfilters',
     'sales',
-    'invoice',
+    
+  
 ]
 
 MIDDLEWARE = [

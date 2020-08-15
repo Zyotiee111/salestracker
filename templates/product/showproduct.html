@@ -28,7 +28,10 @@
                  <th> Selling Price</th>
                  <th> Discount</th>
                  <th> Total Sale</th>
+                 <th> Item Remaining</th>
                  <th> Total Profit </th>
+              
+
             </tr>
 
          </thead>
@@ -43,7 +46,10 @@
                 <td> {{ product.selling_price }}</td>
                 <td> {{ product.discount }}</td>
                 <td> {{ product.totalsale }}</td>
-                <td> {{ product.totalprofit }}</td>
+                <td> {{ product.item_remaining }}</td>
+                <td> {{ product.totalprofit}}</td>
+              
+             
                
                 <td>
                     <a href="{% url 'edit_product' product.id %}">

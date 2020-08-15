@@ -6,3 +6,9 @@ class SalesForm(forms.ModelForm):
         model = Sales
         fields = ['date', 'sold_to', 'item','quantity','status']
 
+
+class InvoiceeForm(forms.ModelForm):
+    class Meta:
+        model = Sales
+        fields = ['date', 'sold_to', 'item','quantity','status']
+

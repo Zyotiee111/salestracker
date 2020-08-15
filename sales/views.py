@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from  sales.forms import SalesForm
 from  sales.models import Sales
+from sales.forms import InvoiceeForm
 from Product.models import Product
 from customer.models import Customer
 from django.http import HttpResponse
@@ -26,9 +27,25 @@ def add(request):
             sold_to = customer.id
 
             product = Product.objects.get(id=product_id)
-            product.quantity = product.quantity- quantity
-            product.totalprofit += ((selling_price - discount)- capital_price) * quantity
-            product.save()
+            if product.item_remaining is None:
+                product.item_remaining = product.quantity
+            print(product.item_remaining)
+            product.item_remaining = product.item_remaining - quantity
+            if product.totalsale is None:
+                product.totalsale = 0
+            product.totalsale += quantity
+            print(product.totalsale)
+
+            # product.quantity = product.quantity- quantity
+            # product.totalsale += quantity
+            # if product.item_remaining is None:
+            #     product.item_remaining = 0
+            # product.item_remaining = product.totalsale + product.quantity
+           
+            if product.totalprofit is None:
+                product.totalprofit = 0
+            product.totalprofit = product.totalprofit +(( selling_price- discount)- capital_price ) * quantity 
+            product.save() 
             
             Sales.objects.create(
                 date = date,
@@ -65,6 +82,18 @@ def delete(request,id):
     sales = Sales.objects.get(id=id)
     sales.delete()
     return redirect("sale:show_sale")
+
+def create(request):
+    if request.method == "POST":
+        form = InvoiceeForm(request.POST)
+        redirect('sale:show_invoice')
+    else:
+        form = InvoiceeForm()
+    return render(request, "Invoice/createinvoice.html", {'form': form})
+
+def showinvoice(request,id):
+    saless = Sales.objects.get(id = id)
+    return render(request,"Invoice/showinvoice.html",{'saless':saless})
 
 
 

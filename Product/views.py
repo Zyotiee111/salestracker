@@ -9,11 +9,8 @@ def track(request):
     if request.method == "POST":
         form = ProductForm(request.POST)
         if form.is_valid():
-            try:
-                form.save()
-                return redirect("show_product")
-            except:
-                pass
+            form.save()
+            return redirect("show_product")
     else:
         form = ProductForm()
     return render(request, "product/addproduct.html", {'form': form})
