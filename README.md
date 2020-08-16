@@ -14,7 +14,7 @@ pip install django
 ```
 activate the virtual enviroment
 ```bash
-salestransaction\Scripts\activate
+salestransaction\env\Scripts\activate
 ```
 To connect with database
 ```bash
