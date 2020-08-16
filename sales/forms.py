@@ -10,5 +10,5 @@ class SalesForm(forms.ModelForm):
 class InvoiceeForm(forms.ModelForm):
     class Meta:
         model = Sales
-        fields = ['date', 'sold_to', 'item','quantity','status']
+        fields = ['sold_to']
 

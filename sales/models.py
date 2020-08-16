@@ -20,3 +20,16 @@ class Sales(models.Model):
     Discount = models.DecimalField(max_digits=10,decimal_places=2,default = None)
     Total = models.DecimalField(max_digits=10,decimal_places=2,default = None)
 
+
+class Invoice(models.Model):
+    id = models.AutoField(primary_key=True)
+    date = models.DateField()
+    sold_to = models.ForeignKey(Customer, on_delete = models.CASCADE, related_name ="+") 
+    item = models.ForeignKey(Product, on_delete = models.CASCADE, related_name ="+")
+    quantity = models.IntegerField()
+    amount = models.DecimalField(max_digits=10,decimal_places=2)
+    status =  models.CharField(max_length = 20,choices= choice )
+    dueamount = models.DecimalField(max_digits=10,decimal_places=2)
+    Discount = models.DecimalField(max_digits=10,decimal_places=2)
+    Total = models.DecimalField(max_digits=10,decimal_places=2)
+

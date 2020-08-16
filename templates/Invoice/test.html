@@ -6,57 +6,53 @@
         <div class="col-md-" style="text-align:center;"> <h1> Sales Tracker Invoice </h1></div>
     </div>
     
-    {% for s in saless %}
+    {% for sale in sales %}
    
        
     <table class="table  table-bordered table-sm" style="border:2px solid black">
         
         <tr>
             <th style="border:1px solid black"> Customer Name</th>
-            <td style="border:1px solid black">  {{ s.id }}</td>
+            <td style="border:1px solid black">  {{ sale.sold_to }}</td>
         </tr>
         
         <tr>
             <th style="border:1px solid black"> Item</th>
-            <td style="border:1px solid black">  {{ i.item }}</td>
+            <td style="border:1px solid black">  {{ sale.item }}</td>
         </tr>
-        
-        <tr>
-            <th style="border:1px solid black"> Description</th>
-            <td style="border:1px solid black">  {{ i.description }}</td>
-        </tr>
+     
         
         <tr>
             <th style="border:1px solid black"> Quantity</th>
-            <td style="border:1px solid black">  {{ i.quantity }}</td>
+            <td style="border:1px solid black">  {{ sale.quantity }}</td>
         </tr>
         
         <tr>
             <th style="border:1px solid black"> Status</th>
-            <td style="border:1px solid black">  {{ i.status }}</td>
+            <td style="border:1px solid black">  {{sale.status }}</td>
         </tr>
         
         <tr>
-            <th style="border:1px solid black"> Amount</th>
-            <td style="border:1px solid black">  {{ i.amount }}</td>
+            <th style="border:1px solid black"> Rate</th>
+            <td style="border:1px solid black">  {{ sale.amount }}</td>
         </tr>
 
         <tr>
-            <th style="border:1px solid black"> Discount</th>
-            <td style="border:1px solid black">  {{ i.discount }}</td>
+            <th style="border:1px solid black"> Discount Per Item</th>
+            <td style="border:1px solid black">  {{ sale.Discount }}</td>
         </tr>
 
         <tr>
             <th style="border:1px solid black"> Due Amount</th>
-            <td style="border:1px solid black">  {{ i.dueamount}}</td>
+            <td style="border:1px solid black">  {{ sale.dueamount}}</td>
         </tr>
         <tr>
             <th style="border:1px solid black"> Total </th>
-            <td style="border:1px solid black">  {{ i.total}}</td>
+            <td style="border:1px solid black">  {{ sale.Total}}</td>
         </tr>
         <br>
         <div class="row">
-            <div class="col-md-" style="text-align: end;"> <h4>Date {{ i.date }} </h4></div>
+            <div class="col-md-" style="text-align: end;"> <h4>Date {{ sale.date }} </h4></div>
           </div>
         
     </table> 
@@ -71,3 +67,15 @@
 
 
 {% endblock %}
+
+
+
+{% for sale in sales %}
+    {{sale.item}}
+    {{sale.sold_to}}
+    {{sale.amount}}
+    {{sale.Total}}
+
+{% endfor %}
+
+<h3>Total Sum: </h3>{{total_sum}}
