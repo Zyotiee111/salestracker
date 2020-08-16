@@ -11,6 +11,7 @@ urlpatterns = [
     path('edit/<int:id>', views.edit, name= "edit_sale"),
     path('delete/<int:id>', views.delete, name = "delete_sale"),
     path('createinvoice/',views.create,name = "create_invoice"),
+    path('showinvoice/',views.display, name = "show_invoice"),
   
    
 ]

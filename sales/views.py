@@ -87,43 +87,58 @@ def delete(request,id):
 
 def create(request):
     if request.method == "POST":
-        form =InvoiceeForm(request.POST)
+        form = InvoiceeForm(request.POST)
         if form.is_valid():
-          sold_to =  form.cleaned_data['sold_to']
-          customer = Customer.objects.get(name=sold_to)
-          sales_trans = Sales.objects.filter(sold_to=customer)
-          for sale in sales_trans:
-              s = Sales.objects.get(sold_to=customer, item=sale.item)
-              if  s.count() > 0:
-                  dueamount += s.dueamount
-                  quantity += s.quantity
-                  discount += s.Discount
-                  total += s.Total
-          Invoice.objects.create(
-              date = datetime.date.today(),
-              sold_to = s.sold_to,
-              item = s.item,
-              quantity = quantity,
-              amount= s.amount,
-              status = s.status,
-              dueamount = 0,
-              Discount = discount,
-              Total = total
+            sold_to = form.cleaned_data['sold_to']
+            customer = Customer.objects.get(name=sold_to)
+            sales_trans = Sales.objects.filter(sold_to=customer)
 
-          )
-        
-
-        #   total_sum = 0
-        #   for s_item in sales_trans:
-        #       total_sum += s_item.Total
-        #   context  = {
-        #       'sales': sales_trans,
-        #       'total_sum': total_sum,
-        #    }
-          return render(request, "Invoice/test.html", context)
+            #sale_item = ''
+            for sale in sales_trans:
+                s = Sales.objects.filter(sold_to=customer, item=sale.item)
+                print(s.count())
+                if s.count() > 1:
+                    dueamount = quantity = discount = total = 0
+                    for s_item in s:
+                        dueamount += s_item.dueamount
+                        quantity += s_item.quantity
+                        discount += s_item.Discount
+                        total += s_item.Total
+                    Invoice.objects.create(
+                        date=datetime.date.today(),
+                        sold_to=customer,
+                        item=sale.item,
+                        quantity=quantity,
+                        amount=sale.amount,
+                        status=sale.status,
+                        dueamount=dueamount,
+                        Discount=discount,
+                        Total=total
+                    )
+                    break
+                elif s.count() == 1:
+                    Invoice.objects.create(
+                        date=sale.date,
+                        sold_to=customer,
+                        item=sale.item,
+                        quantity=sale.quantity,
+                        amount=sale.amount,
+                        status=sale.status,
+                        dueamount=sale.dueamount,
+                        Discount=sale.Discount,
+                        Total=sale.Total,
+                    )
+                    break
+                else:
+                    pass
+            return redirect("sale:show_invoice")
     else:
         form = InvoiceeForm()
     return render(request, "Invoice/createinvoice.html", {'form': form})
+
+def display(request):
+    invoice = Invoice.objects.all()
+    return render(request,"Invoice/test.html",{'invoice':invoice})
 
 
 
